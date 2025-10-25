@@ -1,0 +1,7 @@
+Flask
+# Add other dependencies here if any
+flask
+google-generativeai
+streamlit
+pillow
+python-dotenv
