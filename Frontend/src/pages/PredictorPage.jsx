@@ -138,11 +138,11 @@ const PredictorPage = ({ navigateTo }) => {
             const finalTotalFat = total_fat ? parseFloat(total_fat).toFixed(1) : 'N/A';
             
             return (
-                <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
+                <div className="flex flex-col gap-6 w-full ">
                     
                     {/* NEW: Display the Uploaded Image Preview */}
                     {imageToShow && (
-                        <div className="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-indigo-200 text-center">
+                        <div className="bg-blue-100 p-6 rounded-2xl shadow-lg border-t-8 border-blue-800 text-center">
                             <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Analyzed Image</h2>
                             <img 
                                 src={imageToShow} 
@@ -151,7 +151,7 @@ const PredictorPage = ({ navigateTo }) => {
                             />
                             <button
                                 onClick={handleAnalyzeNew}
-                                className="mt-4 px-4 py-2 text-sm bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition"
+                                className="mt-4 px-4 py-2 text-sm bg-gray-700 text-white rounded-full hover:bg-gray-200 hover:text-black transition"
                             >
                                 Analyze New Image
                             </button>
@@ -159,22 +159,22 @@ const PredictorPage = ({ navigateTo }) => {
                     )}
 
                     {/* Calorie Analysis Results */}
-                    <div className="flex flex-col md:flex-row gap-6 p-8 bg-white rounded-2xl shadow-lg border-t-4 border-indigo-200">
+                    <div className="flex flex-col md:flex-row gap-6 p-8 bg-blue-100 rounded-2xl shadow-lg border-t-8 border-blue-800">
                         {/* Detected Ingredients Column */}
                         <div className="flex-1 md:pr-4">
                             <h2 className="text-xl font-semibold text-gray-800 mb-6 border-b pb-3">Detected Ingredients</h2>
                             <div className="space-y-4">
                                 {food_items.map((item, index) => (
-                                    <div key={index} className="flex items-center bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-100">
+                                    <div key={index} className="flex items-center bg-gray-100 shadow-xl p-4 rounded-xl  border border-gray-100">
                                         {/* REMOVED ICON DISPLAY BLOCK */}
-                                        <div className="flex-grow">
-                                            <h3 className="text-lg font-medium text-gray-800">{item.name}</h3>
+                                        <div className="flex-1">
+                                            <h3 className="text-lg font-medium text-gray-900">{item.name}</h3>
                                             <p className="text-sm text-gray-500">
                                                 P: {item.protein || 'N/A'}g | C: {item.carbs || 'N/A'}g | F: {item.fat || 'N/A'}g
                                             </p>
                                         </div>
-                                        <div className="flex-shrink-0 text-right">
-                                            <span className="text-lg font-bold text-purple-600">
+                                        <div className="shrink-0 text-right">
+                                            <span className="text-lg font-bold text-blue-700">
                                                 {item.calories || 'N/A'}
                                             </span>
                                             <span className="text-sm text-gray-500 block">kcal</span>
@@ -187,8 +187,8 @@ const PredictorPage = ({ navigateTo }) => {
                         {/* Total Nutrition Column */}
                         <div className="md:w-1/3 md:pl-4 md:border-l border-gray-200 mt-8 md:mt-0">
                             <h2 className="text-xl font-semibold text-gray-800 mb-6 border-b pb-3">Total Nutrition</h2>
-                            <div className="bg-gradient-to-br from-purple-100 to-indigo-100 p-6 rounded-2xl text-center mb-6 shadow-md">
-                                <p className="text-5xl font-extrabold text-purple-700">{total_calories || 'N/A'}</p>
+                            <div className="bg-linear-to-br from-blue-300 to-indigo-100 p-6 rounded-2xl text-center mb-6 shadow-md">
+                                <p className="text-5xl font-extrabold text-blue-700">{total_calories || 'N/A'}</p>
                                 <p className="text-lg text-gray-600">Total Calories (kcal)</p>
                             </div>
                             <div className="space-y-4">
@@ -213,12 +213,12 @@ const PredictorPage = ({ navigateTo }) => {
 
         // --- Upload Page Content (Unchanged) ---
         return (
-            <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-indigo-200 max-w-xl w-full mx-auto">
+            <div className="bg-blue-100 p-8 rounded-2xl shadow-lg border-t-8 border-indigo-800 mx-w-auto w-full mx-auto">
                 <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">Upload Your Food Image</h2>
                 
                 {/* Drag & Drop Area */}
                 <div
-                    className="flex flex-col items-center justify-center p-12 text-center border-2 border-dashed border-indigo-300 rounded-xl bg-indigo-50/20 hover:bg-indigo-50 transition duration-300 cursor-pointer mb-8"
+                    className="flex flex-col items-center justify-center p-12 text-center border-2 border-dashed border-indigo-300 rounded-xl bg-indigo-50 hover:bg-indigo-100 transition duration-300 cursor-pointer mb-8"
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     onClick={triggerFileInput}
@@ -248,7 +248,7 @@ const PredictorPage = ({ navigateTo }) => {
                 <div className="flex justify-center mb-8">
                     <button
                         onClick={triggerFileInput}
-                        className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition duration-300"
+                        className="px-8 py-3 bg-blue-800 text-white font-semibold rounded-full shadow-lg hover:bg-blue-900 transition duration-300"
                     >
                         Choose File
                     </button>
@@ -271,7 +271,7 @@ const PredictorPage = ({ navigateTo }) => {
                             px-12 py-4 text-lg font-semibold rounded-full shadow-lg transition-all duration-300 
                             ${!file || isLoading
                                 ? 'bg-gray-400 cursor-not-allowed'
-                                : 'bg-gradient-to-r from-green-400 to-indigo-500 text-white hover:from-green-500 hover:to-indigo-600 hover:shadow-xl active:from-green-600 active:to-indigo-700'
+                                : 'bg-linear-to-r from-green-400 to-indigo-500 text-white hover:from-green-500 hover:to-indigo-600 hover:shadow-xl active:from-green-600 active:to-indigo-700'
                             }
                             flex items-center justify-center space-x-2 w-full max-w-sm
                         `}
@@ -296,9 +296,9 @@ const PredictorPage = ({ navigateTo }) => {
 
     // --- Calorie Predictor UI ---
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 sm:p-6 md:p-8">
+        <div className="min-h-screen  flex flex-col items-center p-4 sm:p-6 md:p-8">
             {/* Header - Always visible */}
-            <header className="w-full max-w-4xl flex items-center justify-between py-4 px-6 bg-white rounded-xl shadow-md mb-8">
+            <header className="w-full max-w-7xl flex items-center justify-between py-4 px-6 bg-blue-200 rounded-xl shadow-lg mb-8">
                 <div className="flex items-center space-x-4">
                     <button onClick={() => navigateTo('')} className="text-gray-500 hover:text-gray-700 transition-colors">
                         <ArrowLeft className="w-6 h-6" />
@@ -306,7 +306,7 @@ const PredictorPage = ({ navigateTo }) => {
                     <span className="text-2xl">🍎</span>
                     <h1 className="text-2xl font-bold text-gray-800">AI Calorie Predictor</h1>
                 </div>
-                <div className="flex items-center space-x-2">
+                {/* <div className="flex items-center space-x-2">
                     <span className="text-gray-600">Theme:</span>
                     <button
                         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -315,11 +315,11 @@ const PredictorPage = ({ navigateTo }) => {
                         <Moon className="w-5 h-5" />
                         <span>{theme === 'light' ? 'Light' : 'Dark'}</span>
                     </button>
-                </div>
+                </div> */}
             </header>
 
             {/* Main Content Area */}
-            <div className="w-full max-w-4xl">
+            <div className="w-full max-w-7xl">
                 {renderContent}
             </div>
         </div>
