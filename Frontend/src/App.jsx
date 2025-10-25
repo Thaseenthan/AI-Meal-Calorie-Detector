@@ -43,10 +43,10 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-/**
- * Main Application Router.
- * This component sets up the routing for the application.
- */
+
+ // Main Application Router.
+ // This component sets up the routing for the application.
+ 
 const AppRoutes = () => {
   // useNavigate hook is used for programmatic navigation
   const navigate = useNavigate();
@@ -95,21 +95,3 @@ const App = () => {
 
 export default App;
 
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//    <div>
-//     <h1 className="text-4xl font-bold text-red-500">
-//     Hello world!
-//   </h1>
-//    </div>
-//   )
-// }
-
-// export default App
