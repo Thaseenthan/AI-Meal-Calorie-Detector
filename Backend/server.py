@@ -51,11 +51,13 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
-# 1. Configure CORS to allow your React app to access the API
-# Replace 'http://localhost:3000' with the actual URL of your React development server.
-# Using CORS(app) with no arguments allows all origins, which is acceptable for development.
-
-CORS(app, origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:3000"])
+# Configure CORS - allow all origins in production or specify your Vercel domain
+# For production, replace '*' with your specific Vercel domain
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "*")
+if allowed_origins == "*":
+    CORS(app)
+else:
+    CORS(app, origins=allowed_origins.split(","))
 
 # Save uploaded files to static/uploads
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "uploads")
@@ -107,6 +109,6 @@ def predict():
 
 
 if __name__ == "__main__":
-    # Consider using a different port than the default 5000 if needed, 
-    # but 5000 is fine if React runs on 3000.
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    # Get port from environment variable for production deployment
+    port = int(os.getenv("PORT", 5000))
+    app.run(debug=False, port=port, host='0.0.0.0')

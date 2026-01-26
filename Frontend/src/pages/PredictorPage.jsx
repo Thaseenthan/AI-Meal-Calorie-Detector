@@ -15,8 +15,8 @@ import {
     Utensils, 
 } from 'lucide-react';
 
-// The base URL for the Flask API (running on port 5000)
-const API_URL = 'http://localhost:5000/predict';
+// The base URL for the Flask API - using environment variable
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 /**
  * 2. Calorie Predictor Component (The analysis logic)
@@ -78,7 +78,7 @@ const PredictorPage = ({ navigateTo }) => {
         formData.append('image', file);
 
         try {
-            const response = await fetch(API_URL, { method: 'POST', body: formData });
+            const response = await fetch(`${API_URL}/predict`, { method: 'POST', body: formData });
             const data = await response.json();
 
             if (!response.ok) {
