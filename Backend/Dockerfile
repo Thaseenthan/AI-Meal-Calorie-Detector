@@ -20,6 +20,5 @@ RUN mkdir -p static/uploads
 # Expose port (Railway will set PORT env variable)
 EXPOSE 8080
 
-# Command to run the Flask app with gunicorn
-# Railway sets PORT as environment variable
-CMD ["sh", "-c", "gunicorn server:app --bind 0.0.0.0:${PORT:-8080}"]
+# Start gunicorn - use exec form with bash to properly expand PORT variable
+CMD ["/bin/bash", "-c", "gunicorn server:app --bind 0.0.0.0:${PORT:-8080}"]
