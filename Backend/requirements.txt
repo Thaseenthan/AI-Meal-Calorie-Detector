@@ -1,7 +1,6 @@
-Flask
-# Add other dependencies here if any
-flask
+Flask==3.0.0
+flask-cors==4.0.0
 google-generativeai
-streamlit
 pillow
 python-dotenv
+gunicorn==21.2.0

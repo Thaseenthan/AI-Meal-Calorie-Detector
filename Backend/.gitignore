@@ -1,0 +1,27 @@
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Uploads
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Test files
+Test_image/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
