@@ -20,5 +20,4 @@ RUN mkdir -p static/uploads
 # Expose port (Railway will set PORT env variable)
 EXPOSE 8080
 
-# Start gunicorn - use exec form with bash to properly expand PORT variable
-CMD ["/bin/bash", "-c", "gunicorn server:app --bind 0.0.0.0:${PORT:-8080}"]
+# No CMD here - Railway will use the Procfile instead
