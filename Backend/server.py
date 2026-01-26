@@ -55,7 +55,7 @@ app = Flask(__name__)
 # Replace 'http://localhost:3000' with the actual URL of your React development server.
 # Using CORS(app) with no arguments allows all origins, which is acceptable for development.
 
-CORS(app, origins=["http://localhost:5173", "http://localhost:3000"])
+CORS(app, origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:3000"])
 
 # Save uploaded files to static/uploads
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "uploads")
