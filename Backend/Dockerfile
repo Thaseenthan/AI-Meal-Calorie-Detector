@@ -17,11 +17,9 @@ COPY . /app
 # Create uploads directory
 RUN mkdir -p static/uploads
 
-# Make entrypoint script executable
-RUN chmod +x entrypoint.sh
-
 # Expose port (Railway will set PORT env variable)
 EXPOSE 8080
 
-# Use entrypoint script to handle PORT variable properly
-ENTRYPOINT ["./entrypoint.sh"]
+# Command to run the Flask app with gunicorn
+# Railway sets PORT as environment variable
+CMD ["sh", "-c", "gunicorn server:app --bind 0.0.0.0:${PORT:-8080}"]
