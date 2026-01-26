@@ -21,4 +21,5 @@ RUN mkdir -p static/uploads
 EXPOSE 8080
 
 # Command to run the Flask app with gunicorn
-CMD gunicorn server:app --bind 0.0.0.0:$PORT
+# Use shell form to properly expand environment variables
+CMD gunicorn server:app --bind 0.0.0.0:${PORT:-8080}
